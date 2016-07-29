@@ -22,7 +22,6 @@ def tsum(hexhash):
     return sum(int(hexhash[i: i + 2], 16) for i in range(0, len(hexhash), 2))
 
 def work():
-    # Start both not at 0 and 160 to avoid a lot of startup noise.
     max_ones = 120
     min_ones = 40
     rand_length = 20
@@ -44,15 +43,15 @@ def work():
             min_ones = ones_count
             print "New Bit MIN Hash Found %s = %s" % (plain, min_ones)
 
-        if hashhex.startswith('ffffffff'):
+        if hashhex.startswith('fffffffff'):
             print "New MAX Hash Found %s:%s" % (hashhex, clear)
-        elif hashhex.startswith('00000000'):
+        elif hashhex.startswith('000000000'):
             print "New MIN Hash Found %s:%s" % (hashhex, clear)
 
         tsumhex = tsum(hashhex)
         if tsumhex < 134:
             print "New Byte MIN Hash Found %s:%s" % (hashhex, clear)
-        elif tsumhex > 460:
+        elif tsumhex > 4800:
             print "New Byte MAX Hash Found %s:%s" % (hashhex, clear)
 
 if __name__ == '__main__':
