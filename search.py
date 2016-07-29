@@ -43,7 +43,7 @@ def work():
             min_ones = ones_count
             print "New Bit MIN Hash Found %s = %s" % (plain, min_ones)
 
-        if hashhex.startswith('fffffffff'):
+        if hashhex.startswith('ffffffffff'):
             print "New MAX Hash Found %s:%s" % (hashhex, clear)
         elif hashhex.startswith('00000000000'):
             print "New MIN Hash Found %s:%s" % (hashhex, clear)
