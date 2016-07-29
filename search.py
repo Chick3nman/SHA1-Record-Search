@@ -49,7 +49,7 @@ def work():
             print "New MIN Hash Found %s:%s" % (hashhex, clear)
 
         tsumhex = tsum(hashhex)
-        if tsumhex < 134:
+        if tsumhex < 125:
             print "New Byte MIN Hash Found %s:%s" % (hashhex, clear)
         elif tsumhex > 4800:
             print "New Byte MAX Hash Found %s:%s" % (hashhex, clear)
