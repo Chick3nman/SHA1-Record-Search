@@ -45,7 +45,7 @@ def work():
 
         if hashhex.startswith('fffffffff'):
             print "New MAX Hash Found %s:%s" % (hashhex, clear)
-        elif hashhex.startswith('000000000'):
+        elif hashhex.startswith('00000000000'):
             print "New MIN Hash Found %s:%s" % (hashhex, clear)
 
         tsumhex = tsum(hashhex)
