@@ -20,10 +20,13 @@ def generate_strings(size):
 
 def tsum(hexhash):
     return sum(int(hexhash[i: i + 2], 16) for i in range(0, len(hexhash), 2))
-
+    
+def nibsum(nibhash):
+    return sum(int(nibhash[i: i + 1], 16) for i in range(0, len(nibhash), 1))
+    
 def work():
     # Start both not at 0 and 160 to avoid a lot of startup noise.
-    max_ones = 120
+    max_ones = 122
     min_ones = 37
     rand_length = 12
     i = 0
@@ -44,16 +47,22 @@ def work():
             min_ones = ones_count
             print "New Bit MIN Hash Found %s = %s" % (plain, min_ones)
 
-        if hashhex[:9] == "ffffffffff":
+        if hashhex[:9] == "fffffffffff":
             print "New MAX Hash Found %s:%s" % (hashhex, clear)
-        elif hashhex[:10] == '0000000000':
+        elif hashhex[:10] == '00000000000':
             print "New MIN Hash Found %s:%s" % (hashhex, clear)
 
         tsumhex = tsum(hashhex)
-        if tsumhex < 656:
-            print "New Byte MIN Hash Found %s:%s:%s" % (hashhex, clear, tsumhex)
-        elif tsumhex > 4472:
-            print "New Byte MAX Hash Found %s:%s:%s" % (hashhex, clear, tsumhex)
+        if tsumhex < 598:
+            print "New Byte MIN Hash Found %s:%s" % (hashhex, clear)
+        elif tsumhex > 4523:
+            print "New Byte MAX Hash Found %s:%s" % (hashhex, clear)
+        
+        nibsumhex = nibsum(hashhex)
+        if nibsumhex < 116:
+            print "New Nib MIN Hash Found %s:%s" % (hashhex, clear)
+        elif nibsumhex > 484:
+            print "New Nib MAX Hash Found %s:%s" % (hashhex, clear)
 
 if __name__ == '__main__':
     count = multiprocessing.cpu_count()
