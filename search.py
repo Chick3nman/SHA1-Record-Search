@@ -47,15 +47,15 @@ def work():
             min_ones = ones_count
             print "New Bit MIN Hash Found %s = %s" % (plain, min_ones)
 
-        if hashhex[:9] == "fffffffffff":
+        if hashhex[:11] == "fffffffffff":
             print "New MAX Hash Found %s:%s" % (hashhex, clear)
-        elif hashhex[:10] == '00000000000':
+        elif hashhex[:11] == '00000000000':
             print "New MIN Hash Found %s:%s" % (hashhex, clear)
 
         tsumhex = tsum(hashhex)
-        if tsumhex < 598:
+        if tsumhex < 572:
             print "New Byte MIN Hash Found %s:%s" % (hashhex, clear)
-        elif tsumhex > 4523:
+        elif tsumhex > 4578:
             print "New Byte MAX Hash Found %s:%s" % (hashhex, clear)
         
         nibsumhex = nibsum(hashhex)
