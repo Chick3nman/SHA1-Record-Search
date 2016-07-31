@@ -19,14 +19,15 @@ def generate_strings(size):
             yield ''.join(alphabet[i: i + size])
 
 def tsum(hexhash):
-    return sum(int(hexhash[i: i + 2], 16) for i in range(0, len(hexhash), 2))
+    b = bytearray.fromhex(hexhash)
+    return sum(b)
     
 def nibsum(nibhash):
     return sum(int(nibhash[i: i + 1], 16) for i in range(0, len(nibhash), 1))
     
 def work():
     # Start both not at 0 and 160 to avoid a lot of startup noise.
-    max_ones = 122
+    max_ones = 123
     min_ones = 37
     rand_length = 12
     i = 0
