@@ -23,7 +23,12 @@ def tsum(hexhash):
     return sum(b)
     
 def nibsum(nibhash):
-    return sum(int(nibhash[i: i + 1], 16) for i in range(0, len(nibhash), 1))
+    b = bytearray.fromhex(nibhash)
+    nsum = 0
+    for byte in b:
+        nsum += byte/16
+        nsum += byte % 16
+    return nsum
     
 def work():
     # Start both not at 0 and 160 to avoid a lot of startup noise.
