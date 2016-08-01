@@ -32,8 +32,8 @@ def nibsum(nibhash):
     
 def work():
     # Start both not at 0 and 160 to avoid a lot of startup noise.
-    max_ones = 123
-    min_ones = 37
+    max_ones = 126
+    min_ones = 33
     rand_length = 12
     i = 0
     for combo in generate_strings(rand_length):
@@ -59,15 +59,15 @@ def work():
             print "New MIN Hash Found %s:%s" % (hashhex, clear)
 
         tsumhex = tsum(hashhex)
-        if tsumhex < 572:
+        if tsumhex < 481:
             print "New Byte MIN Hash Found %s:%s" % (hashhex, clear)
-        elif tsumhex > 4578:
+        elif tsumhex > 4639:
             print "New Byte MAX Hash Found %s:%s" % (hashhex, clear)
         
         nibsumhex = nibsum(hashhex)
-        if nibsumhex < 116:
+        if nibsumhex < 106:
             print "New Nib MIN Hash Found %s:%s" % (hashhex, clear)
-        elif nibsumhex > 484:
+        elif nibsumhex > 494:
             print "New Nib MAX Hash Found %s:%s" % (hashhex, clear)
 
 if __name__ == '__main__':
